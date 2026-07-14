@@ -1,16 +1,20 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
-  Outlet,
+  HeadContent,
   Link,
+  Outlet,
+  Scripts,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import appCss from "../styles.css?url";
+
+const siteTitle = "Mustqbil \u2014 AI-Powered Careers and Job Matching";
+const siteDescription =
+  "Discover AI-powered job matching, resume tools, interview preparation, and employer hiring workflows built for Pakistan's modern career market.";
 
 function NotFoundComponent() {
   return (
@@ -37,6 +41,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -77,24 +82,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Clarity — Simple project management for focused teams" },
+      { title: siteTitle },
       {
         name: "description",
-        content:
-          "Clarity helps small teams plan work, track progress, and ship faster without the clutter of complex project management tools.",
+        content: siteDescription,
       },
-      { name: "author", content: "Clarity" },
+      { name: "author", content: "Mustqbil" },
       {
         property: "og:title",
-        content: "Clarity — Simple project management for focused teams",
+        content: siteTitle,
       },
       {
         property: "og:description",
-        content:
-          "Clarity helps small teams plan work, track progress, and ship faster without the clutter of complex project management tools.",
+        content: siteDescription,
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Mustqbil" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: siteTitle },
+      { name: "twitter:description", content: siteDescription },
     ],
     links: [
       {

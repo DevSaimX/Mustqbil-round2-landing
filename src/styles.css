@@ -63,6 +63,16 @@
 
 :root {
   --radius: 0.625rem;
+  --motion-fast: 180ms;
+  --motion-ui: 320ms;
+  --motion-reveal: 640ms;
+  --motion-stagger: 90ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-reveal-distance: 28px;
+  --motion-hover-distance: 4px;
+  --motion-reveal-scale: 0.985;
+  --motion-press-scale: 0.98;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -133,6 +143,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     border-color: var(--color-border);
   }
@@ -140,5 +154,436 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    min-width: 320px;
+    text-rendering: optimizeLegibility;
+  }
+
+  a,
+  button,
+  input {
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0;
+  }
+
+  .mustqbil-section {
+    background-color: #ede8de;
+    color: #0b1e16;
+  }
+
+  .mustqbil-panel {
+    background-color: #f7f2e8;
+    border-color: rgb(12 49 35 / 16%);
+  }
+
+  .mustqbil-dark {
+    background-color: #0b2a1d;
+    color: #f6f0e4;
+  }
+
+  .mustqbil-yellow {
+    background-color: #f6ca14;
+    color: #07140f;
+  }
+
+  .reveal-on-scroll {
+    --reveal-delay: 0ms;
+  }
+
+  .motion-ready .reveal-on-scroll {
+    opacity: 1;
+    transform: translate3d(0, 10px, 0) scale(var(--motion-reveal-scale));
+    transition:
+      opacity var(--motion-reveal) var(--motion-ease),
+      transform var(--motion-reveal) var(--motion-ease-emphasized);
+    transition-delay: var(--reveal-delay);
+    will-change: opacity, transform;
+  }
+
+  .motion-ready .reveal-on-scroll[data-reveal="left"] {
+    transform: translate3d(calc(var(--motion-reveal-distance) * -1), 16px, 0)
+      scale(var(--motion-reveal-scale));
+  }
+
+  .motion-ready .reveal-on-scroll[data-reveal="right"] {
+    transform: translate3d(var(--motion-reveal-distance), 16px, 0) scale(var(--motion-reveal-scale));
+  }
+
+  .motion-ready .reveal-on-scroll[data-reveal="scale"] {
+    transform: translate3d(0, 18px, 0) scale(0.97);
+  }
+
+  .motion-ready .reveal-on-scroll[data-reveal="fade"] {
+    transform: none;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .motion-ready .motion-heading > * {
+    opacity: 1;
+    transform: translate3d(0, 14px, 0);
+    transition:
+      opacity calc(var(--motion-reveal) - 100ms) var(--motion-ease),
+      transform calc(var(--motion-reveal) - 100ms) var(--motion-ease-emphasized);
+  }
+
+  .is-visible .motion-heading > * {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .is-visible .motion-heading > :nth-child(1) {
+    transition-delay: 80ms;
+  }
+
+  .is-visible .motion-heading > :nth-child(2) {
+    transition-delay: 150ms;
+  }
+
+  .is-visible .motion-heading > :nth-child(3) {
+    transition-delay: 220ms;
+  }
+
+  .motion-ready .stagger-children > * {
+    opacity: 1;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity calc(var(--motion-reveal) - 80ms) var(--motion-ease),
+      transform calc(var(--motion-reveal) - 80ms) var(--motion-ease-emphasized),
+      border-color var(--motion-fast) ease,
+      box-shadow var(--motion-fast) ease,
+      background-color var(--motion-fast) ease;
+  }
+
+  .is-visible .stagger-children > * {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .hero-visual-enter .stagger-children > * {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .is-visible .stagger-children > :nth-child(1) {
+    transition-delay: calc(var(--motion-stagger) * 0.75);
+  }
+
+  .is-visible .stagger-children > :nth-child(2) {
+    transition-delay: calc(var(--motion-stagger) * 1.35);
+  }
+
+  .is-visible .stagger-children > :nth-child(3) {
+    transition-delay: calc(var(--motion-stagger) * 1.95);
+  }
+
+  .is-visible .stagger-children > :nth-child(4) {
+    transition-delay: calc(var(--motion-stagger) * 2.55);
+  }
+
+  .is-visible .stagger-children > :nth-child(5) {
+    transition-delay: calc(var(--motion-stagger) * 3.15);
+  }
+
+  .is-visible .stagger-children > :nth-child(6) {
+    transition-delay: calc(var(--motion-stagger) * 3.75);
+  }
+
+  .is-visible .stagger-children > :nth-child(7) {
+    transition-delay: calc(var(--motion-stagger) * 4.35);
+  }
+
+  .is-visible .stagger-children > :nth-child(8) {
+    transition-delay: calc(var(--motion-stagger) * 4.95);
+  }
+
+  .premium-lift {
+    transition:
+      transform var(--motion-ui) var(--motion-ease),
+      border-color var(--motion-fast) ease,
+      box-shadow var(--motion-fast) ease,
+      background-color var(--motion-fast) ease;
+  }
+
+  .premium-lift:hover {
+    transform: translate3d(0, calc(var(--motion-hover-distance) * -1), 0);
+  }
+
+  .ambient-float {
+    animation: ambient-float 7s ease-in-out infinite;
+  }
+
+  .ambient-pulse {
+    animation: ambient-pulse 4.8s ease-in-out infinite;
+  }
+
+  .hero-light-sweep {
+    background:
+      radial-gradient(circle at 18% 18%, rgb(246 202 20 / 14%), transparent 24rem),
+      radial-gradient(circle at 86% 12%, rgb(237 232 222 / 8%), transparent 22rem),
+      linear-gradient(115deg, transparent 0%, rgb(246 202 20 / 5%) 45%, transparent 64%);
+    animation: hero-light-shift 9s ease-in-out infinite;
+  }
+
+  .hero-sequence > * {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    animation: hero-enter var(--motion-reveal) var(--motion-ease-emphasized) forwards;
+  }
+
+  .hero-sequence > :nth-child(1) {
+    animation-delay: 70ms;
+  }
+
+  .hero-sequence > :nth-child(2) {
+    animation-delay: 150ms;
+  }
+
+  .hero-sequence > :nth-child(3) {
+    animation-delay: 230ms;
+  }
+
+  .hero-sequence > :nth-child(4) {
+    animation-delay: 310ms;
+  }
+
+  .hero-sequence > :nth-child(5) {
+    animation-delay: 390ms;
+  }
+
+  .hero-visual-enter {
+    opacity: 0;
+    transform: translate3d(28px, 18px, 0) scale(0.985);
+    animation: hero-enter var(--motion-reveal) var(--motion-ease-emphasized) 430ms forwards;
+  }
+
+  .navbar-enter {
+    animation: navbar-enter var(--motion-reveal) var(--motion-ease-emphasized) both;
+  }
+
+  .animated-progress {
+    transform-origin: left center;
+    transition: transform var(--motion-reveal) var(--motion-ease-emphasized);
+  }
+
+  .motion-ready .animated-progress {
+    transform: scaleX(0);
+  }
+
+  .is-visible .animated-progress,
+  .hero-visual-enter .animated-progress {
+    transform: scaleX(1);
+  }
+
+  .hero-visual-enter .animated-progress {
+    animation: progress-grow var(--motion-reveal) var(--motion-ease-emphasized) 720ms both;
+  }
+
+  .filtering-out {
+    opacity: 0.45;
+    transform: translate3d(0, 8px, 0) scale(0.995);
+    transition:
+      opacity var(--motion-fast) ease,
+      transform var(--motion-fast) ease;
+  }
+
+  .mobile-menu-items > * {
+    opacity: 0;
+    transform: translate3d(12px, 0, 0);
+    animation: menu-item-enter var(--motion-ui) var(--motion-ease-emphasized) forwards;
+  }
+
+  .mobile-menu-items > :nth-child(1) {
+    animation-delay: 60ms;
+  }
+
+  .mobile-menu-items > :nth-child(2) {
+    animation-delay: 110ms;
+  }
+
+  .mobile-menu-items > :nth-child(3) {
+    animation-delay: 160ms;
+  }
+
+  .mobile-menu-items > :nth-child(4) {
+    animation-delay: 210ms;
+  }
+
+  .cta-ambient {
+    position: relative;
+  }
+
+  .cta-ambient::before {
+    position: absolute;
+    inset: -45% auto auto 55%;
+    width: 24rem;
+    height: 24rem;
+    pointer-events: none;
+    content: "";
+    background: radial-gradient(circle, rgb(246 202 20 / 18%), transparent 62%);
+    animation: cta-glow 8s ease-in-out infinite;
+  }
+
+  .cta-ambient > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .accordion-content {
+    animation-duration: var(--motion-ui);
+    animation-timing-function: var(--motion-ease);
+  }
+
+  .accordion-content[data-state="open"] {
+    animation-name: accordion-down;
+  }
+
+  .accordion-content[data-state="closed"] {
+    animation-name: accordion-up;
+  }
+}
+
+@keyframes hero-enter {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes navbar-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes menu-item-enter {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0.2;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+
+  to {
+    height: 0;
+    opacity: 0.2;
+  }
+}
+
+@keyframes cta-glow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-24px, 18px, 0) scale(1.08);
+  }
+}
+
+@keyframes ambient-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes ambient-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgb(246 202 20 / 0%);
+  }
+
+  50% {
+    box-shadow: 0 0 36px rgb(246 202 20 / 18%);
+  }
+}
+
+@keyframes hero-light-shift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.72;
+  }
+
+  50% {
+    transform: translate3d(-18px, 10px, 0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    filter: none !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-on-scroll,
+  .motion-heading > *,
+  .stagger-children > *,
+  .hero-sequence > *,
+  .hero-visual-enter,
+  .mobile-menu-items > *,
+  .hero-light-sweep {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animated-progress {
+    transform: none !important;
   }
 }
