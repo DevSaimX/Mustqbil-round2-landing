@@ -12,9 +12,9 @@ import { useEffect, type ReactNode } from "react";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import appCss from "../styles.css?url";
 
-const siteTitle = "Mustqbil \u2014 AI-Powered Careers and Job Matching";
+const siteTitle = "Mustqbil \u2014 AI-Powered Careers";
 const siteDescription =
-  "Discover AI-powered job matching, resume tools, interview preparation, and employer hiring workflows built for Pakistan's modern career market.";
+  "Mustqbil is an AI-powered jobs and career platform for finding stronger role matches, improving applications, and planning your next career move.";
 
 function NotFoundComponent() {
   return (
@@ -107,7 +107,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "shortcut icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,

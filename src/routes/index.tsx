@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { LandingPage } from "@/components/landing/LandingPage";
 
-const pageTitle = "Mustqbil \u2014 AI-Powered Careers and Job Matching";
+const pageTitle = "Mustqbil \u2014 AI-Powered Careers";
 const pageDescription =
-  "Discover AI-powered job matching, resume tools, interview preparation, and employer hiring workflows built for Pakistan's modern career market.";
+  "Mustqbil is an AI-powered jobs and career platform for finding stronger role matches, improving applications, and planning your next career move.";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
