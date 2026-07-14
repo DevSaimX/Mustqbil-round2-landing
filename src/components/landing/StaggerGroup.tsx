@@ -1,5 +1,6 @@
 import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
 
+import { useInViewOnce } from "@/hooks/use-in-view-once";
 import { cn } from "@/lib/utils";
 
 interface StaggerGroupProps<TElement extends ElementType = "div"> {
@@ -16,9 +17,14 @@ export function StaggerGroup<TElement extends ElementType = "div">({
 }: StaggerGroupProps<TElement> &
   Omit<ComponentPropsWithoutRef<TElement>, keyof StaggerGroupProps<TElement>>) {
   const Component = as ?? "div";
+  const { ref, isInView } = useInViewOnce<HTMLElement>();
 
   return (
-    <Component className={cn("stagger-children", className)} {...props}>
+    <Component
+      ref={ref}
+      className={cn("stagger-children", isInView && "is-visible", className)}
+      {...props}
+    >
       {children}
     </Component>
   );

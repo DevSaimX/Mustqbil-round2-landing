@@ -1,5 +1,6 @@
 import { ArrowRight, ClipboardCheck, FilePlus2, ListChecks, SlidersHorizontal } from "lucide-react";
 
+import { StaggerGroup } from "@/components/landing/StaggerGroup";
 import { Button } from "@/components/ui/button";
 
 const employerBenefits = [
@@ -13,15 +14,15 @@ export function EmployerSection() {
   return (
     <section
       id="employers"
-      className="mustqbil-dark overflow-hidden pb-8 pt-12 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20"
+      className="mustqbil-dark bg-employer-depth relative overflow-hidden pb-8 pt-12 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20"
     >
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <div>
           <p className="text-sm font-semibold text-[#f6ca14]">For employers</p>
-          <h2 className="font-display mt-3 text-4xl font-extrabold leading-tight text-[#f6f0e4] sm:text-5xl">
+          <h2 className="font-display mt-3 text-3xl font-extrabold leading-[1.08] text-[#f6f0e4] [text-wrap:balance] sm:text-4xl md:text-5xl">
             Hire faster with structured AI support, not noisy applicant piles.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#d8d0c1]">
+          <p className="mt-5 text-base leading-7 text-[#d8d0c1] sm:text-lg sm:leading-8">
             Mustqbil helps hiring teams write clearer roles, evaluate candidates consistently, and
             move strong applicants through a focused pipeline.
           </p>
@@ -37,7 +38,7 @@ export function EmployerSection() {
           </Button>
         </div>
 
-        <div className="stagger-children grid gap-4 sm:grid-cols-2">
+        <StaggerGroup className="grid gap-4 sm:grid-cols-2">
           {employerBenefits.map((benefit) => {
             const Icon = benefit.icon;
 
@@ -58,7 +59,7 @@ export function EmployerSection() {
               </article>
             );
           })}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

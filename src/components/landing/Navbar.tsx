@@ -23,6 +23,7 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeHref, setActiveHref] = useState("#top");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const topSection = document.querySelector("#top");
@@ -39,6 +40,33 @@ export function Navbar() {
     observer.observe(topSection);
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let animationFrameId = 0;
+
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const nextProgress = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0;
+
+      setScrollProgress(Math.min(Math.max(nextProgress, 0), 100));
+    }
+
+    function handleScroll() {
+      window.cancelAnimationFrame(animationFrameId);
+      animationFrameId = window.requestAnimationFrame(updateScrollProgress);
+    }
+
+    updateScrollProgress();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -73,11 +101,16 @@ export function Navbar() {
 
   return (
     <header
-      className={`navbar-enter mustqbil-dark sticky top-0 z-50 border-b border-[#f6ca14]/20 before:absolute before:left-0 before:top-0 before:h-1 before:bg-[#f6ca14] before:transition-[width] before:duration-[var(--motion-ui)] ${
-        isScrolled ? "shadow-[0_14px_40px_rgba(0,0,0,0.22)] before:w-full" : "before:w-1/5"
+      className={`navbar-enter mustqbil-dark fixed left-0 right-0 top-0 z-50 border-b border-[#f6ca14]/20 ${
+        isScrolled ? "shadow-[0_14px_40px_rgba(0,0,0,0.22)]" : ""
       }`}
     >
-      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div
+        className="absolute left-0 top-0 h-1 bg-[#f6ca14] transition-[width] duration-[var(--motion-fast)] ease-out"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
+      <div className="mx-auto flex h-[var(--navbar-height)] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="#top" aria-label="Mustqbil home">
           <BrandMark />
         </a>

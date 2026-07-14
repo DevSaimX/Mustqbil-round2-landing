@@ -63,6 +63,7 @@
 
 :root {
   --radius: 0.625rem;
+  --navbar-height: 5rem;
   --motion-fast: 180ms;
   --motion-ui: 320ms;
   --motion-reveal: 640ms;
@@ -145,6 +146,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--navbar-height);
   }
 
   * {
@@ -191,6 +193,666 @@
     color: #07140f;
   }
 
+  .bg-hero-depth::before,
+  .bg-hero-depth::after,
+  .bg-stats-depth::before,
+  .bg-stats-depth::after,
+  .bg-jobs-depth::before,
+  .bg-jobs-depth::after,
+  .bg-tools-depth::before,
+  .bg-tools-depth::after,
+  .bg-workflow-depth::before,
+  .bg-workflow-depth::after,
+  .bg-employer-depth::before,
+  .bg-employer-depth::after,
+  .bg-testimonials-depth::before,
+  .bg-testimonials-depth::after,
+  .bg-faq-depth::before,
+  .bg-faq-depth::after,
+  .bg-cta-depth::before,
+  .bg-cta-depth::after,
+  .bg-footer-depth::before,
+  .bg-footer-depth::after {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    content: "";
+  }
+
+  .bg-hero-depth::before {
+    background:
+      radial-gradient(circle at 18% 28%, rgb(42 111 70 / 34%), transparent 30rem),
+      radial-gradient(circle at 78% 34%, rgb(246 202 20 / 8%), transparent 24rem),
+      linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 4%) 1px, transparent 1px);
+    background-size:
+      auto,
+      auto,
+      76px 76px,
+      76px 76px;
+    mask-image: linear-gradient(to bottom, rgb(0 0 0 / 100%), rgb(0 0 0 / 72%), transparent);
+  }
+
+  .bg-hero-depth::after {
+    background:
+      radial-gradient(ellipse at center, transparent 42%, rgb(2 13 8 / 48%) 100%),
+      repeating-linear-gradient(135deg, rgb(255 255 255 / 3%) 0 1px, transparent 1px 18px);
+    opacity: 0.8;
+  }
+
+  .career-node-field {
+    position: absolute;
+    inset: 6rem 3rem auto auto;
+    z-index: 0;
+    width: min(36rem, 46vw);
+    height: 22rem;
+    pointer-events: none;
+    background:
+      radial-gradient(circle, rgb(246 202 20 / 46%) 0 2px, transparent 3px) 8% 24% / 8rem 7rem,
+      radial-gradient(circle, rgb(246 240 228 / 32%) 0 2px, transparent 3px) 68% 18% / 9rem 8rem,
+      radial-gradient(circle, rgb(246 202 20 / 32%) 0 2px, transparent 3px) 86% 74% / 10rem 8rem,
+      linear-gradient(118deg, transparent 14%, rgb(246 240 228 / 10%) 14.4%, transparent 15% 100%),
+      linear-gradient(22deg, transparent 30%, rgb(246 202 20 / 10%) 30.35%, transparent 31% 100%);
+    opacity: 0.55;
+  }
+
+  .bg-stats-depth::before {
+    background:
+      radial-gradient(circle at 18% 50%, rgb(246 202 20 / 9%), transparent 15rem),
+      radial-gradient(circle at 76% 54%, rgb(70 135 88 / 22%), transparent 18rem),
+      linear-gradient(90deg, transparent, rgb(255 255 255 / 8%), transparent);
+    background-size:
+      auto,
+      auto,
+      25% 100%;
+  }
+
+  .bg-stats-depth::after {
+    background:
+      repeating-linear-gradient(90deg, rgb(255 255 255 / 8%) 0 1px, transparent 1px 25%),
+      linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      44px 44px;
+    opacity: 0.34;
+  }
+
+  .bg-jobs-depth {
+    background:
+      radial-gradient(circle at 68% 48%, rgb(246 202 20 / 15%), transparent 26rem),
+      radial-gradient(circle at 18% 44%, rgb(12 49 35 / 10%), transparent 24rem),
+      radial-gradient(circle at 84% 86%, rgb(255 250 240 / 78%), transparent 18rem), #ede8de;
+  }
+
+  .bg-jobs-depth::before {
+    background:
+      radial-gradient(circle, rgb(12 49 35 / 19%) 0 2px, transparent 3px) 7% 17% / 11rem 8rem,
+      radial-gradient(circle, rgb(246 202 20 / 22%) 0 2px, transparent 3px) 82% 24% / 12rem 9rem,
+      radial-gradient(circle, rgb(12 49 35 / 16%) 0 2px, transparent 3px) 28% 78% / 14rem 9rem,
+      radial-gradient(circle, rgb(12 49 35 / 11%) 0 1.5px, transparent 2.5px) 0 0 / 42px 42px,
+      linear-gradient(26deg, transparent 0 22%, rgb(12 49 35 / 8%) 22.15%, transparent 22.7%),
+      linear-gradient(145deg, transparent 0 52%, rgb(12 49 35 / 7%) 52.15%, transparent 52.7%),
+      linear-gradient(8deg, transparent 0 72%, rgb(246 202 20 / 9%) 72.15%, transparent 72.65%);
+    opacity: 0.82;
+  }
+
+  .bg-jobs-depth::after {
+    background:
+      radial-gradient(
+        circle at 72% 42%,
+        transparent 0 6px,
+        rgb(12 49 35 / 11%) 7px 8px,
+        transparent 9px
+      ),
+      radial-gradient(
+        circle at 16% 72%,
+        transparent 0 5px,
+        rgb(246 202 20 / 20%) 6px 7px,
+        transparent 8px
+      ),
+      radial-gradient(
+        circle at 88% 76%,
+        transparent 0 5px,
+        rgb(12 49 35 / 10%) 6px 7px,
+        transparent 8px
+      ),
+      radial-gradient(ellipse at 48% 66%, rgb(246 202 20 / 13%), transparent 34rem),
+      repeating-linear-gradient(
+        118deg,
+        transparent 0 62px,
+        rgb(12 49 35 / 5%) 63px 64px,
+        transparent 65px 126px
+      );
+    opacity: 0.76;
+  }
+
+  .bg-tools-depth {
+    background:
+      radial-gradient(circle at 15% 24%, rgb(255 250 240 / 78%), transparent 23rem),
+      radial-gradient(circle at 84% 22%, rgb(246 202 20 / 16%), transparent 22rem),
+      radial-gradient(circle at 22% 88%, rgb(12 49 35 / 8%), transparent 18rem), #f0ebe1;
+  }
+
+  .bg-tools-depth::before {
+    background:
+      linear-gradient(90deg, transparent 0 16%, rgb(12 49 35 / 10%) 16.15%, transparent 16.45%),
+      linear-gradient(0deg, transparent 0 33%, rgb(12 49 35 / 9%) 33.15%, transparent 33.45%),
+      linear-gradient(90deg, transparent 0 68%, rgb(246 202 20 / 15%) 68.15%, transparent 68.45%),
+      linear-gradient(0deg, transparent 0 74%, rgb(12 49 35 / 8%) 74.15%, transparent 74.45%),
+      radial-gradient(circle, rgb(12 49 35 / 19%) 0 2px, transparent 3px) 10% 31% / 13rem 8rem,
+      radial-gradient(circle, rgb(246 202 20 / 18%) 0 2px, transparent 3px) 74% 58% / 14rem 8rem,
+      radial-gradient(circle, rgb(12 49 35 / 12%) 0 1.5px, transparent 2.5px) 0 0 / 54px 54px;
+    opacity: 0.72;
+  }
+
+  .bg-tools-depth::after {
+    background:
+      linear-gradient(rgb(12 49 35 / 10%), rgb(12 49 35 / 10%)) 16% 64% / 8rem 1px,
+      linear-gradient(90deg, rgb(12 49 35 / 10%), rgb(12 49 35 / 10%)) 16% 64% / 1px 5rem,
+      linear-gradient(rgb(246 202 20 / 14%), rgb(246 202 20 / 14%)) 67% 34% / 10rem 1px,
+      linear-gradient(90deg, rgb(246 202 20 / 14%), rgb(246 202 20 / 14%)) 78% 34% / 1px 7rem,
+      radial-gradient(
+        circle at 20% 66%,
+        transparent 0 15px,
+        rgb(12 49 35 / 9%) 16px 17px,
+        transparent 18px
+      ),
+      radial-gradient(
+        circle at 80% 52%,
+        transparent 0 18px,
+        rgb(246 202 20 / 14%) 19px 20px,
+        transparent 21px
+      ),
+      radial-gradient(circle at 46% 82%, rgb(255 250 240 / 60%), transparent 18rem);
+    background-repeat: no-repeat;
+    opacity: 0.84;
+  }
+
+  .bg-workflow-depth {
+    background:
+      radial-gradient(circle at 50% 42%, rgb(246 202 20 / 12%), transparent 24rem),
+      radial-gradient(circle at 15% 82%, rgb(12 49 35 / 7%), transparent 18rem),
+      linear-gradient(180deg, #ede8de 0%, #f2ede3 58%, #ede8de 100%);
+  }
+
+  .bg-workflow-depth::before {
+    inset: 9rem 1% auto;
+    height: 30rem;
+    border-top: 2px solid rgb(12 49 35 / 9%);
+    border-right: 1px solid rgb(246 202 20 / 13%);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, rgb(246 202 20 / 24%) 0 4px, transparent 5px) 13% 16% / 100% 100%,
+      radial-gradient(circle, rgb(12 49 35 / 15%) 0 3px, transparent 4px) 38% 28% / 100% 100%,
+      radial-gradient(circle, rgb(246 202 20 / 22%) 0 4px, transparent 5px) 64% 20% / 100% 100%,
+      radial-gradient(circle, rgb(12 49 35 / 14%) 0 3px, transparent 4px) 86% 32% / 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 0.74;
+    transform: rotate(-4deg);
+  }
+
+  .bg-workflow-depth::after {
+    background:
+      linear-gradient(35deg, transparent 0 38%, rgb(12 49 35 / 8%) 38.15%, transparent 38.65%),
+      linear-gradient(145deg, transparent 0 58%, rgb(246 202 20 / 11%) 58.15%, transparent 58.65%),
+      conic-gradient(
+        from 45deg at 78% 30%,
+        transparent 0 20%,
+        rgb(12 49 35 / 8%) 20% 21%,
+        transparent 21% 100%
+      ),
+      radial-gradient(circle, rgb(12 49 35 / 10%) 0 1.5px, transparent 2.5px) 0 0 / 48px 48px;
+    opacity: 0.72;
+  }
+
+  .bg-employer-depth {
+    background:
+      radial-gradient(circle at 24% 32%, rgb(66 132 82 / 34%), transparent 24rem),
+      radial-gradient(circle at 82% 62%, rgb(246 202 20 / 7%), transparent 21rem), #092417;
+  }
+
+  .bg-employer-depth::before {
+    background:
+      repeating-linear-gradient(135deg, rgb(255 255 255 / 5%) 0 1px, transparent 1px 20px),
+      radial-gradient(ellipse at center, transparent 36%, rgb(0 0 0 / 28%) 100%);
+  }
+
+  .bg-employer-depth::after {
+    inset: 2rem 4vw auto auto;
+    width: min(32rem, 52vw);
+    height: 24rem;
+    background:
+      linear-gradient(rgb(255 255 255 / 9%), rgb(255 255 255 / 4%)) 0 0 / 12rem 7rem,
+      linear-gradient(rgb(255 255 255 / 7%), rgb(255 255 255 / 3%)) 8rem 8rem / 15rem 8rem,
+      linear-gradient(rgb(246 202 20 / 10%), rgb(255 255 255 / 3%)) 18rem 3rem / 11rem 6rem;
+    background-repeat: no-repeat;
+    opacity: 0.34;
+    transform: rotate(-4deg);
+  }
+
+  .bg-testimonials-depth {
+    background:
+      radial-gradient(circle at 52% 52%, rgb(246 202 20 / 13%), transparent 26rem),
+      radial-gradient(circle at 18% 16%, rgb(255 250 240 / 82%), transparent 20rem),
+      radial-gradient(circle at 86% 82%, rgb(12 49 35 / 8%), transparent 18rem), #ede8de;
+  }
+
+  .bg-testimonials-depth::before {
+    content: "“";
+    inset: -5rem auto auto 4vw;
+    width: auto;
+    height: auto;
+    color: rgb(12 49 35 / 6%);
+    font-family: Georgia, serif;
+    font-size: clamp(12rem, 22vw, 24rem);
+    line-height: 1;
+  }
+
+  .bg-testimonials-depth::after {
+    background:
+      radial-gradient(
+        circle at 18% 64%,
+        transparent 0 34px,
+        rgb(12 49 35 / 8%) 35px 36px,
+        transparent 37px
+      ),
+      radial-gradient(
+        circle at 84% 30%,
+        transparent 0 42px,
+        rgb(246 202 20 / 13%) 43px 44px,
+        transparent 45px
+      ),
+      radial-gradient(
+        circle at 72% 82%,
+        transparent 0 26px,
+        rgb(12 49 35 / 7%) 27px 28px,
+        transparent 29px
+      ),
+      radial-gradient(circle, rgb(12 49 35 / 10%) 0 1px, transparent 1.5px) 0 0 / 34px 34px,
+      linear-gradient(
+        90deg,
+        rgb(255 255 255 / 28%),
+        transparent 26%,
+        transparent 74%,
+        rgb(12 49 35 / 5%)
+      );
+    opacity: 0.68;
+  }
+
+  .bg-faq-depth {
+    background:
+      radial-gradient(circle at 50% 48%, rgb(255 250 240 / 96%), transparent 24rem),
+      radial-gradient(circle at 18% 84%, rgb(246 202 20 / 12%), transparent 19rem),
+      radial-gradient(circle at 84% 12%, rgb(12 49 35 / 8%), transparent 17rem), #f0ebe1;
+  }
+
+  .bg-faq-depth::before {
+    inset: 4rem auto auto 6%;
+    width: 23rem;
+    height: 23rem;
+    border: 2px solid rgb(12 49 35 / 8%);
+    border-right-color: transparent;
+    border-radius: 999px;
+    box-shadow:
+      14rem 10rem 0 -8rem rgb(246 202 20 / 9%),
+      48rem 3rem 0 -10rem rgb(12 49 35 / 7%);
+    transform: rotate(-28deg);
+  }
+
+  .bg-faq-depth::after {
+    background:
+      radial-gradient(circle, rgb(12 49 35 / 12%) 0 1.5px, transparent 2.5px) 8% 72% / 9rem 7rem,
+      radial-gradient(circle, rgb(246 202 20 / 17%) 0 2px, transparent 3px) 82% 20% / 10rem 8rem,
+      radial-gradient(circle, rgb(12 49 35 / 9%) 0 1.5px, transparent 2.5px) 76% 82% / 12rem 8rem,
+      radial-gradient(ellipse at center, transparent 34%, rgb(12 49 35 / 5%) 100%),
+      linear-gradient(122deg, transparent 0 34%, rgb(12 49 35 / 6%) 34.15%, transparent 34.65%);
+    opacity: 0.72;
+  }
+
+  .testimonial-story-art,
+  .workflow-journey-art,
+  .faq-support-art,
+  .job-discovery-art,
+  .tools-system-art {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .testimonial-story-art svg,
+  .workflow-journey-art svg,
+  .faq-support-art svg,
+  .job-discovery-art svg,
+  .tools-system-art svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .heading-protection {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .heading-protection::before {
+    position: absolute;
+    inset: -1.75rem -2rem;
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background:
+      radial-gradient(
+        ellipse at center,
+        rgb(247 242 232 / 88%),
+        rgb(247 242 232 / 58%) 46%,
+        transparent 72%
+      ),
+      linear-gradient(90deg, transparent, rgb(237 232 222 / 72%), transparent);
+    filter: blur(2px);
+  }
+
+  .heading-protection > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .heading-protection-workflow {
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+
+  .heading-protection-tools {
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+
+  .heading-protection-left {
+    max-width: 48rem;
+  }
+
+  .workflow-journey-art {
+    transform: translateY(2.5rem);
+  }
+
+  .job-discovery-art {
+    inset: -2rem -6vw -3rem;
+    opacity: 0.74;
+    transform: translateY(1rem);
+  }
+
+  .tools-system-art {
+    transform: translateY(1.5rem);
+  }
+
+  .job-route-line,
+  .tool-flow-line {
+    fill: none;
+    stroke: rgb(12 49 35 / 12%);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+  }
+
+  .job-route-line-secondary,
+  .tool-flow-line-secondary {
+    stroke: rgb(246 202 20 / 13%);
+    stroke-width: 1.8;
+  }
+
+  .job-map-nodes path {
+    fill: none;
+    stroke: rgb(12 49 35 / 12%);
+    stroke-width: 1.8;
+  }
+
+  .job-map-nodes circle,
+  .tool-system-nodes circle {
+    fill: rgb(246 202 20 / 18%);
+    stroke: rgb(12 49 35 / 18%);
+    stroke-width: 2.4;
+  }
+
+  .job-pins path,
+  .job-compass circle,
+  .tool-system-cards rect {
+    fill: rgb(255 250 240 / 20%);
+    stroke: rgb(12 49 35 / 10%);
+    stroke-width: 2;
+  }
+
+  .job-pins circle,
+  .job-compass path {
+    fill: rgb(246 202 20 / 14%);
+    stroke: rgb(12 49 35 / 12%);
+    stroke-width: 1.8;
+  }
+
+  .job-discovery-labels text,
+  .tool-branch-labels text {
+    fill: rgb(12 49 35 / 20%);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .tool-system-cards path,
+  .tool-mini-glyphs path {
+    fill: none;
+    stroke: rgb(12 49 35 / 13%);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .tool-mini-glyphs circle {
+    fill: rgb(255 250 240 / 18%);
+    stroke: rgb(246 202 20 / 15%);
+    stroke-width: 2;
+  }
+
+  .story-line {
+    fill: none;
+    stroke: rgb(12 49 35 / 13%);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+  }
+
+  .story-line-soft {
+    stroke: rgb(246 202 20 / 14%);
+    stroke-width: 1.8;
+  }
+
+  .speech-bubble {
+    fill: rgb(255 250 240 / 22%);
+    stroke: rgb(12 49 35 / 10%);
+    stroke-width: 2.4;
+  }
+
+  .speech-bubble-alt {
+    fill: rgb(246 202 20 / 7%);
+    stroke: rgb(122 95 0 / 11%);
+  }
+
+  .quote-outline {
+    fill: none;
+    stroke: rgb(12 49 35 / 11%);
+    stroke-width: 3;
+    font-family: Georgia, serif;
+    font-size: 17rem;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+
+  .quote-outline-mid {
+    stroke: rgb(246 202 20 / 16%);
+    font-size: 11rem;
+  }
+
+  .quote-outline-end {
+    stroke: rgb(12 49 35 / 9%);
+    font-size: 14rem;
+  }
+
+  .profile-network path,
+  .qa-nodes path {
+    fill: none;
+    stroke: rgb(12 49 35 / 13%);
+    stroke-width: 1.8;
+  }
+
+  .profile-network circle,
+  .qa-nodes circle {
+    fill: rgb(246 202 20 / 18%);
+    stroke: rgb(12 49 35 / 15%);
+    stroke-width: 2;
+  }
+
+  .feedback-symbols path {
+    fill: rgb(246 202 20 / 12%);
+    stroke: rgb(12 49 35 / 10%);
+    stroke-width: 1.5;
+  }
+
+  .journey-path {
+    fill: none;
+    stroke: rgb(12 49 35 / 15%);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 10 14;
+  }
+
+  .journey-path-lower {
+    stroke: rgb(246 202 20 / 16%);
+    stroke-width: 2.4;
+    stroke-dasharray: none;
+  }
+
+  .journey-main-nodes circle {
+    fill: rgb(246 202 20 / 16%);
+    stroke: rgb(12 49 35 / 18%);
+    stroke-width: 3;
+  }
+
+  .journey-milestones circle {
+    fill: rgb(12 49 35 / 14%);
+  }
+
+  .journey-arrows path {
+    fill: none;
+    stroke: rgb(12 49 35 / 14%);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .journey-labels text,
+  .faq-labels text {
+    fill: rgb(12 49 35 / 18%);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .journey-icons rect,
+  .faq-icons rect {
+    fill: rgb(255 250 240 / 20%);
+    stroke: rgb(12 49 35 / 10%);
+    stroke-width: 2;
+  }
+
+  .journey-icons path,
+  .faq-icons path {
+    fill: none;
+    stroke: rgb(12 49 35 / 12%);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .faq-question-curve {
+    fill: none;
+    stroke: rgb(12 49 35 / 12%);
+    stroke-width: 10;
+    stroke-linecap: round;
+  }
+
+  .faq-question-curve-right {
+    stroke: rgb(246 202 20 / 14%);
+  }
+
+  .faq-flow-line {
+    fill: none;
+    stroke: rgb(12 49 35 / 11%);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+  }
+
+  .faq-frame {
+    fill: rgb(255 250 240 / 18%);
+    stroke: rgb(12 49 35 / 8%);
+    stroke-width: 2;
+  }
+
+  .faq-ripples ellipse {
+    fill: none;
+    stroke: rgb(246 202 20 / 11%);
+    stroke-width: 1.8;
+  }
+
+  .faq-icons text {
+    fill: none;
+    stroke: rgb(12 49 35 / 12%);
+    stroke-width: 2;
+    font-family: Georgia, serif;
+    font-size: 6.8rem;
+    font-weight: 700;
+  }
+
+  .bg-cta-depth {
+    background:
+      radial-gradient(circle at 76% 50%, rgb(246 202 20 / 18%), transparent 18rem),
+      radial-gradient(circle at 12% 22%, rgb(70 135 88 / 20%), transparent 18rem);
+  }
+
+  .bg-cta-depth::before {
+    background:
+      linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 4%) 1px, transparent 1px);
+    background-size: 58px 58px;
+    mask-image: radial-gradient(circle at 70% 50%, black, transparent 72%);
+  }
+
+  .bg-cta-depth::after {
+    background:
+      radial-gradient(circle, rgb(246 202 20 / 45%) 0 2px, transparent 3px) 70% 36% / 10rem 7rem,
+      radial-gradient(circle, rgb(246 240 228 / 28%) 0 2px, transparent 3px) 84% 66% / 9rem 7rem,
+      linear-gradient(24deg, transparent 0 66%, rgb(246 202 20 / 12%) 66.3%, transparent 67%);
+    opacity: 0.48;
+  }
+
+  .bg-footer-depth {
+    background:
+      linear-gradient(180deg, rgb(246 202 20 / 5%), transparent 8rem),
+      radial-gradient(circle at 12% 0%, rgb(70 135 88 / 16%), transparent 22rem), #06170f;
+  }
+
+  .bg-footer-depth::before {
+    inset: 0 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(246 202 20 / 28%), transparent);
+  }
+
+  .bg-footer-depth::after {
+    background:
+      linear-gradient(rgb(255 255 255 / 3%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 3%) 1px, transparent 1px);
+    background-size: 72px 72px;
+    opacity: 0.28;
+  }
+
   .reveal-on-scroll {
     --reveal-delay: 0ms;
   }
@@ -224,7 +886,7 @@
 
   .reveal-on-scroll.is-visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: none;
   }
 
   .motion-ready .motion-heading > * {
@@ -263,9 +925,10 @@
       background-color var(--motion-fast) ease;
   }
 
-  .is-visible .stagger-children > * {
+  .is-visible .stagger-children > *,
+  .stagger-children.is-visible > * {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: none;
   }
 
   .hero-visual-enter .stagger-children > * {
@@ -273,35 +936,43 @@
     transform: translate3d(0, 0, 0);
   }
 
-  .is-visible .stagger-children > :nth-child(1) {
+  .is-visible .stagger-children > :nth-child(1),
+  .stagger-children.is-visible > :nth-child(1) {
     transition-delay: calc(var(--motion-stagger) * 0.75);
   }
 
-  .is-visible .stagger-children > :nth-child(2) {
+  .is-visible .stagger-children > :nth-child(2),
+  .stagger-children.is-visible > :nth-child(2) {
     transition-delay: calc(var(--motion-stagger) * 1.35);
   }
 
-  .is-visible .stagger-children > :nth-child(3) {
+  .is-visible .stagger-children > :nth-child(3),
+  .stagger-children.is-visible > :nth-child(3) {
     transition-delay: calc(var(--motion-stagger) * 1.95);
   }
 
-  .is-visible .stagger-children > :nth-child(4) {
+  .is-visible .stagger-children > :nth-child(4),
+  .stagger-children.is-visible > :nth-child(4) {
     transition-delay: calc(var(--motion-stagger) * 2.55);
   }
 
-  .is-visible .stagger-children > :nth-child(5) {
+  .is-visible .stagger-children > :nth-child(5),
+  .stagger-children.is-visible > :nth-child(5) {
     transition-delay: calc(var(--motion-stagger) * 3.15);
   }
 
-  .is-visible .stagger-children > :nth-child(6) {
+  .is-visible .stagger-children > :nth-child(6),
+  .stagger-children.is-visible > :nth-child(6) {
     transition-delay: calc(var(--motion-stagger) * 3.75);
   }
 
-  .is-visible .stagger-children > :nth-child(7) {
+  .is-visible .stagger-children > :nth-child(7),
+  .stagger-children.is-visible > :nth-child(7) {
     transition-delay: calc(var(--motion-stagger) * 4.35);
   }
 
-  .is-visible .stagger-children > :nth-child(8) {
+  .is-visible .stagger-children > :nth-child(8),
+  .stagger-children.is-visible > :nth-child(8) {
     transition-delay: calc(var(--motion-stagger) * 4.95);
   }
 
@@ -554,6 +1225,76 @@
   50% {
     transform: translate3d(-18px, 10px, 0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --navbar-height: 4.5rem;
+    --motion-reveal-distance: 12px;
+    --motion-stagger: 55ms;
+  }
+
+  .bg-jobs-depth::before,
+  .bg-tools-depth::before,
+  .bg-workflow-depth::before,
+  .bg-testimonials-depth::before,
+  .bg-faq-depth::before {
+    opacity: 0.42;
+  }
+
+  .bg-jobs-depth::after,
+  .bg-tools-depth::after,
+  .bg-workflow-depth::after,
+  .bg-testimonials-depth::after,
+  .bg-faq-depth::after {
+    opacity: 0.48;
+  }
+
+  .bg-workflow-depth::before {
+    inset-inline: -45%;
+    height: 20rem;
+  }
+
+  .bg-testimonials-depth::before {
+    inset: -2rem auto auto -1rem;
+    font-size: 12rem;
+  }
+
+  .testimonial-story-art,
+  .workflow-journey-art,
+  .faq-support-art,
+  .job-discovery-art,
+  .tools-system-art {
+    display: none;
+  }
+
+  .motion-ready .reveal-on-scroll,
+  .motion-ready .reveal-on-scroll[data-reveal="left"],
+  .motion-ready .reveal-on-scroll[data-reveal="right"],
+  .motion-ready .reveal-on-scroll[data-reveal="scale"] {
+    transform: translate3d(0, 12px, 0);
+  }
+
+  .motion-ready .stagger-children > * {
+    transform: translate3d(0, 12px, 0);
+  }
+
+  .motion-ready .stagger-children.is-visible > *,
+  .motion-ready .is-visible .stagger-children > *,
+  .reveal-on-scroll.is-visible {
+    transform: none;
+  }
+
+  .journey-labels,
+  .faq-labels,
+  .journey-icons,
+  .feedback-symbols,
+  .job-discovery-labels,
+  .job-compass,
+  .tool-branch-labels,
+  .tool-mini-glyphs {
+    display: none;
   }
 }
 

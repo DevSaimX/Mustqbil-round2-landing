@@ -74,7 +74,7 @@ export function JobCard({ job, isBookmarked, onToggleBookmark }: JobCardProps) {
       </div>
 
       <div className="mt-auto pt-5">
-        <div className="flex items-center justify-between gap-3 border-t border-[#0c3123]/10 pt-4 text-sm">
+        <div className="flex flex-col gap-2 border-t border-[#0c3123]/10 pt-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:gap-3">
           <span className="font-bold text-[#07140f]">{job.salary}</span>
           <span className="text-[#5c665d]">{job.postedDate}</span>
         </div>

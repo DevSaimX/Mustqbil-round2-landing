@@ -33,26 +33,27 @@ export function Hero() {
   const isComplete = searchStatus === "complete";
 
   return (
-    <section id="top" className="mustqbil-dark relative isolate overflow-hidden">
+    <section id="top" className="mustqbil-dark bg-hero-depth relative isolate overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(120deg,#071b13_0%,#0b2a1d_48%,#173c22_100%)]" />
       <div className="absolute bottom-0 left-0 right-0 -z-10 h-24 bg-[#113724]" />
       <div className="absolute right-0 top-0 -z-10 h-full w-1/3 bg-[#f6ca14]/[0.05]" />
       <div className="hero-light-sweep absolute inset-x-0 top-0 -z-10 h-full opacity-80" />
+      <div className="career-node-field" aria-hidden="true" />
 
-      <div className="mx-auto grid min-h-[calc(100vh-5rem)] w-full max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
+      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] w-full max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
         <div className="hero-sequence">
           <p className="inline-flex items-center gap-3 border-l-2 border-[#f6ca14] pl-4 text-sm font-medium text-[#d8d0c1]">
             <BrainCircuit className="h-4 w-4" aria-hidden="true" />
             AI-powered career matching for Pakistan
           </p>
-          <h1 className="font-display mt-6 max-w-4xl text-5xl font-extrabold leading-[1.04] text-[#f6f0e4] sm:text-6xl lg:text-7xl">
+          <h1 className="font-display mt-6 max-w-4xl text-4xl font-extrabold leading-[1.04] text-[#f6f0e4] [text-wrap:balance] sm:text-5xl md:text-6xl lg:text-7xl">
             Find work that{" "}
             <span className="mustqbil-yellow inline-block px-2 leading-[0.98]">fits you</span>
             <br />
             not just your{" "}
             <span className="mustqbil-yellow inline-block px-2 leading-[0.98]">keywords</span>.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d8d0c1]">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-[#d8d0c1] sm:text-lg sm:leading-8">
             Mustqbil learns your skills, goals, location preferences, and growth path to recommend
             roles where you can do meaningful work and apply with confidence.
           </p>
@@ -88,7 +89,7 @@ export function Hero() {
               <Button
                 type="submit"
                 disabled={isSearching}
-                className="mustqbil-yellow ambient-pulse h-12 rounded-none px-6 font-semibold transition-transform hover:bg-[#ffd91f] active:scale-[0.98]"
+                className="mustqbil-yellow ambient-pulse h-12 w-full rounded-none px-6 font-semibold transition-transform hover:bg-[#ffd91f] active:scale-[0.98] lg:w-auto"
               >
                 {isSearching ? (
                   <>
@@ -138,7 +139,7 @@ export function Hero() {
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-[#5c665d]">AI match dashboard</p>
-                  <h2 className="font-display mt-1 text-3xl font-bold text-[#07140f]">
+                  <h2 className="font-display mt-1 text-2xl font-bold text-[#07140f] sm:text-3xl">
                     Your strongest roles
                   </h2>
                 </div>

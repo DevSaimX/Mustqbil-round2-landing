@@ -1,6 +1,7 @@
 import { ArrowRight, Facebook, Github, Linkedin, Twitter } from "lucide-react";
 
 import { BrandMark } from "@/components/landing/BrandMark";
+import { StaggerGroup } from "@/components/landing/StaggerGroup";
 import { Button } from "@/components/ui/button";
 
 const footerGroups = [
@@ -37,26 +38,31 @@ const socialLinks = [
   { label: "GitHub", href: "https://github.com", icon: Github },
 ];
 
+const COPYRIGHT_YEAR = 2026;
+
 export function Footer() {
   return (
-    <footer className="mustqbil-dark">
-      <section id="create-profile" className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+    <footer className="mustqbil-dark bg-footer-depth relative overflow-hidden">
+      <section
+        id="create-profile"
+        className="bg-cta-depth relative border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8"
+      >
         <span id="signin" className="block scroll-mt-24" aria-hidden="true" />
-        <div className="cta-ambient mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-8 overflow-hidden border border-[#f6ca14]/25 bg-[#f6ca14]/10 p-6 sm:p-8 lg:flex-row lg:items-center">
+        <div className="cta-ambient relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-8 overflow-hidden border border-[#f6ca14]/25 bg-[#f6ca14]/10 p-6 sm:p-8 lg:flex-row lg:items-center">
           <div>
             <p className="text-sm font-semibold text-[#f6ca14]">Start smarter</p>
-            <h2 className="font-display mt-3 max-w-2xl text-4xl font-extrabold leading-tight text-[#f6f0e4] sm:text-5xl">
+            <h2 className="font-display mt-3 max-w-2xl text-3xl font-extrabold leading-[1.08] text-[#f6f0e4] [text-wrap:balance] sm:text-4xl md:text-5xl">
               Build your profile once. Let Mustqbil find better opportunities daily.
             </h2>
           </div>
-          <Button className="mustqbil-yellow ambient-pulse rounded-none font-semibold transition-transform hover:bg-[#ffd91f] active:scale-[0.98]">
+          <Button className="mustqbil-yellow ambient-pulse w-full rounded-none font-semibold transition-transform hover:bg-[#ffd91f] active:scale-[0.98] sm:w-auto">
             Create Profile
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Button>
         </div>
       </section>
 
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_2fr] lg:px-8">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_2fr] lg:px-8">
         <div>
           <BrandMark />
           <p className="mt-4 max-w-sm text-sm leading-6 text-[#c8beaa]">
@@ -80,7 +86,7 @@ export function Footer() {
           </div>
         </div>
 
-        <nav className="stagger-children grid gap-8 sm:grid-cols-3" aria-label="Footer navigation">
+        <StaggerGroup as="nav" className="grid gap-8 sm:grid-cols-3" aria-label="Footer navigation">
           {footerGroups.map((group) => (
             <div key={group.title}>
               <h3 className="text-sm font-semibold text-[#f6f0e4]">{group.title}</h3>
@@ -98,12 +104,12 @@ export function Footer() {
               </ul>
             </div>
           ))}
-        </nav>
+        </StaggerGroup>
       </div>
 
-      <div className="border-t border-white/10 px-4 py-6 sm:px-6 lg:px-8">
+      <div className="relative z-10 border-t border-white/10 px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 text-sm text-[#9f947f] sm:flex-row sm:items-center sm:justify-between">
-          <p>Copyright {new Date().getFullYear()} Mustqbil. All rights reserved.</p>
+          <p>Copyright {COPYRIGHT_YEAR} Mustqbil. All rights reserved.</p>
           <p>Demo landing page for the Round 2 AI-First Developer Bootcamp assessment.</p>
         </div>
       </div>
